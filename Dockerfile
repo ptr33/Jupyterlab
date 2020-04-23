@@ -27,6 +27,7 @@ RUN pip install --upgrade pip && \
     sympy \
     seaborn \
     nose \
+    requests \
     rdflib \
     SPARQLWrapper \
     jupyterlab-git && \
