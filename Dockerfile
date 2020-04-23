@@ -5,7 +5,7 @@ RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
   apt-get upgrade -y && \
-  apt-get install -y nodejs texlive-latex-extra texlive-xetex && \
+  apt-get install -y nodejs texlive-latex-extra texlive-xetex vim nano raptor2-utils && \
   rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip && \
@@ -27,6 +27,8 @@ RUN pip install --upgrade pip && \
     sympy \
     seaborn \
     nose \
+    rdflib \
+    SPARQLWrapper \
     jupyterlab-git && \
   jupyter labextension install \
     @jupyter-widgets/jupyterlab-manager \
