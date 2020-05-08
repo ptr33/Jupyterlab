@@ -26,17 +26,17 @@ Volumes can be mounted into `/notebooks` folder. If the folder contains a requir
 
 ### Pull/Update to latest version
 ```bash
-docker pull amalic/jupyterlab:latest
+docker pull umids/jupyterlab:latest
 ```
 
 ### Run
 ```bash
-docker run --rm -it -p 8888:8888 amalic/jupyterlab
+docker run --rm -it -p 8888:8888 umids/jupyterlab
 ```
 
 or if you want to define your own password
 ```bash
-docker run --rm -it -p 8888:8888 -e PASSWORD="<your_secret>" amalic/jupyterlab
+docker run --rm -it -p 8888:8888 -e PASSWORD="<your_secret>" umids/jupyterlab
 ```
 
 The container will install requirements from files present at the root of the repository at `docker run` (in this order):
@@ -66,5 +66,5 @@ docker run --rm -it -p 8888:8888 -v $(pwd):/notebooks -e PASSWORD="<your_secret>
 ### Build from source
 
 ```bash
-docker build -t amalic/jupyterlab .
+docker build -t umids/jupyterlab .
 ```
