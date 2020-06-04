@@ -31,8 +31,8 @@ RUN pip install --upgrade pip && \
     nose \
     jupyter-lsp \
     python-language-server \
-    jupyterlab-git \
-    FAIRWorkflowsExtension && \
+    jupyterlab-git && \
+    # FAIRWorkflowsExtension && \
   jupyter labextension install \
     @jupyter-widgets/jupyterlab-manager \
     @jupyterlab/latex \
@@ -41,8 +41,16 @@ RUN pip install --upgrade pip && \
     @bokeh/jupyter_bokeh \
     @krassowski/jupyterlab-lsp \
     @jupyterlab/git \
-    jupyterlab-spreadsheet \
-    FAIRWorkflowsExtension
+    jupyterlab-spreadsheet 
+    # FAIRWorkflowsExtension
+
+# Install JupyterLab FAIRWorkflowsExtension
+RUN pip install git+git://github.com/fair-workflows/FAIRWorkbench@master
+RUN pip install git+git://github.com/fair-workflows/FAIRWorkflowsExtension@master
+RUN git clone https://github.com/fair-workflows/FAIRWorkflowsExtension /root/FAIRWorkflowsExtension
+WORKDIR /root/FAIRWorkflowsExtension
+RUN jupyter-serverextension enable --py FAIRWorkflowsExtension 
+RUN jlpm && jlpm build && jupyter-labextension link . && jlpm build && jupyter-lab build
 
 COPY bin/entrypoint.sh /usr/local/bin/
 COPY config/ /root/.jupyter/
