@@ -31,7 +31,8 @@ RUN pip install --upgrade pip && \
     nose \
     jupyter-lsp \
     python-language-server \
-    jupyterlab-git && \
+    jupyterlab-git \
+    FAIRWorkflowsExtension && \
   jupyter labextension install \
     @jupyter-widgets/jupyterlab-manager \
     @jupyterlab/latex \
@@ -40,7 +41,8 @@ RUN pip install --upgrade pip && \
     @bokeh/jupyter_bokeh \
     @krassowski/jupyterlab-lsp \
     @jupyterlab/git \
-    jupyterlab-spreadsheet 
+    jupyterlab-spreadsheet \
+    FAIRWorkflowsExtension
 
 COPY bin/entrypoint.sh /usr/local/bin/
 COPY config/ /root/.jupyter/
