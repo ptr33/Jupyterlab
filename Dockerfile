@@ -8,6 +8,11 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
   apt-get install -y nodejs texlive-latex-extra texlive-xetex && \
   rm -rf /var/lib/apt/lists/*
 
+# Install Java
+RUN apt-get update -y && \
+    apt-get install -y default-jre
+ENV JAVA_HOME /usr/lib/jvm/default-java/
+
 RUN pip install --upgrade pip && \
   pip install --upgrade \
     jupyterlab>=2.0.0 \
