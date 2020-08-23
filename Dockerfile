@@ -29,8 +29,8 @@ RUN pip install --upgrade pip && \
     sympy \
     seaborn \
     nose \
-    jupyter-lsp \
-    python-language-server \
+    # jupyter-lsp \
+    # python-language-server \
     jupyterlab-git && \
     # FAIRWorkflowsExtension && \
   jupyter labextension install \
@@ -39,7 +39,7 @@ RUN pip install --upgrade pip && \
     jupyterlab-drawio \ 
     jupyterlab-plotly \
     @bokeh/jupyter_bokeh \
-    @krassowski/jupyterlab-lsp \
+    # @krassowski/jupyterlab-lsp \
     @jupyterlab/git \
     jupyterlab-spreadsheet 
     # FAIRWorkflowsExtension
@@ -51,6 +51,13 @@ RUN git clone https://github.com/fair-workflows/FAIRWorkflowsExtension /root/FAI
 WORKDIR /root/FAIRWorkflowsExtension
 RUN jupyter-serverextension enable --py FAIRWorkflowsExtension 
 RUN jlpm && jlpm build && jupyter-labextension link . && jlpm build && jupyter-lab build
+
+# RUN pip install git+git://github.com/fair-workflows/FAIRWorkbench@add_nanopub_search_things_grlc
+RUN pip install git+git://github.com/fair-workflows/NanopubJL@master
+RUN git clone https://github.com/fair-workflows/NanopubJL /root/NanopubJL
+WORKDIR /root/NanopubJL
+RUN jupyter-serverextension enable --py NanopubJL && \
+    jlpm && jlpm build && jupyter-labextension link . && jlpm build && jupyter-lab build
 
 COPY bin/entrypoint.sh /usr/local/bin/
 COPY config/ /root/.jupyter/
