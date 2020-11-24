@@ -9,32 +9,36 @@
 
 #### Installed Jupyterlab extensions
 - [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Basics.html)
+- [@jupyterlab/git](https://www.npmjs.com/package/@jupyterlab/git)
+- [@krassowski/jupyterlab-lsp](https://github.com/krassowski/jupyterlab-lsp)
 - [@jupyterlab/latex](https://github.com/jupyterlab/jupyterlab-latex)
 - [jupyterlab-plotly](https://www.npmjs.com/package/jupyterlab-plotly)
-- [@mflevine/jupyterlab_html](https://github.com/mflevine/jupyterlab_html)
 - [jupyterlab-drawio](https://github.com/QuantStack/jupyterlab-drawio)
 - [jupyterlab-spreadsheet](https://github.com/quigleyj97/jupyterlab-spreadsheet)
 - [@bokeh/jupyter_bokeh](https://github.com/bokeh/jupyter_bokeh)
 - [@jupyterlab/toc](https://www.npmjs.com/package/@jupyterlab/toc)
-- [@jupyterlab/git](https://www.npmjs.com/package/@jupyterlab/git)
 
 ### Your notebooks
 
-Volumes can be mounted into `/notebooks` folder. If the folder contains a requirements.txt file, it will be installed automatically when the container starts up.
+Volumes can be mounted into `/notebooks` folder. The container will install requirements from files present in the `/notebooks` folder when it starts up (in this order):
+
+- `packages.txt`: install apt-get packages
+- `requirements.txt`: install pip packages
+- `extensions.txt`: install JupyterLab extensions
 
 ---
 
 ### Pull/Update to latest version
 ```bash
-docker pull amalic/jupyterlab:latest
+docker pull ghcr.io/vemonet/jupyterlab:latest
 ```
 
 ### Run
 ```bash
-docker run --rm -it -p 8888:8888 amalic/jupyterlab
+docker run --rm -it -p 8888:8888 ghcr.io/vemonet/jupyterlab
 ```
 
-or if you want to define your own password
+or if you want to define your own password and shared volume:
 ```bash
 docker run --rm -it -p 8888:8888 -v $(pwd)/data:/notebooks -e PASSWORD="password" ghcr.io/vemonet/jupyterlab
 ```
@@ -47,7 +51,7 @@ The container will install requirements from files present at the root of the re
 
 ### Run from Git repository
 
-You can provide a Git repository to be cloned in `/notebooks` when doing `docker run`
+You can provide a Git repository to be cloned in `/notebooks` when starting the container (it will automatically install packages if `requirements.txt`, `packages.txt` or `extensions.txt` are present at the root of the repository).
 
 ```bash
 docker run --rm -it -p 8888:8888 -v /data/jupyterlab-notebooks:/notebooks -e PASSWORD="<your_secret>" -e GIT_URL="https://github.com/vemonet/translator-sparql-notebook" amalic/jupyterlab:latest
@@ -63,8 +67,28 @@ docker run --rm -it -p 8888:8888 -v $(pwd):/notebooks -e PASSWORD="<your_secret>
 
 > Use `${pwd}` for Windows
 
+### Run with docker-compose
+
+Add JupyterLab to a `docker-compose.yml` file:
+
+```yaml
+services:
+  jupyterlab:
+    container_name: jupyterlab
+    image: ghcr.io/vemonet/jupyterlab
+    ports:
+      - 8888:8888
+    volumes:
+      - ./data:/notebooks
+    environment:
+      - PASSWORD=password
+      - GIT_URL=https://github.com/vemonet/translator-sparql-notebook
+```
+
 ### Build from source
 
+Clone the repository first, then build the container image:
+
 ```bash
-docker build -t amalic/jupyterlab .
+docker build -t ghcr.io/vemonet/jupyterlab .
 ```
