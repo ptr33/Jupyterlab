@@ -36,7 +36,7 @@ docker run --rm -it -p 8888:8888 amalic/jupyterlab
 
 or if you want to define your own password
 ```bash
-docker run --rm -it -p 8888:8888 -e PASSWORD="<your_secret>" amalic/jupyterlab
+docker run --rm -it -p 8888:8888 -v $(pwd)/data:/notebooks -e PASSWORD="password" ghcr.io/vemonet/jupyterlab
 ```
 
 The container will install requirements from files present at the root of the repository at `docker run` (in this order):

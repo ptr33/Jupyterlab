@@ -1,10 +1,8 @@
-# Configuration file for jupyter-notebook.
+## Configuration file for jupyter-notebook.
 
-#------------------------------------------------------------------------------
-# Application(SingletonConfigurable) configuration
-#------------------------------------------------------------------------------
+## Supply overrides for terminado. Currently only supports "shell_command".
+c.NotebookApp.terminado_settings = {'shell_command': ['/bin/bash']}
 
-## This is an application.
 
 ## The date format used by logging formatters for %(asctime)s
 #c.Application.log_datefmt = '%Y-%m-%d %H:%M:%S'
@@ -318,9 +316,6 @@
 ## Supply SSL options for the tornado HTTPServer. See the tornado docs for
 #  details.
 #c.NotebookApp.ssl_options = {}
-
-## Supply overrides for terminado. Currently only supports "shell_command".
-c.NotebookApp.terminado_settings = {'shell_command': ['/bin/bash']}
 
 ## Set to False to disable terminals.
 #  
