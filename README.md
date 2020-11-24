@@ -1,6 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/amalic/Jupyterlab/blob/master/LICENSE)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/amalic/jupyterlab.svg)](https://hub.docker.com/r/amalic/jupyterlab/builds)
-[![Docker Pulls](https://img.shields.io/docker/pulls/amalic/jupyterlab.svg)](https://hub.docker.com/r/amalic/jupyterlab/)
+[![Publish Docker image](https://github.com/vemonet/Jupyterlab/workflows/Publish%20Docker%20image/badge.svg)](https://github.com/users/vemonet/packages/container/package/jupyterlab)
 
 
 ## Jupyterlab Docker container
@@ -43,18 +42,12 @@ or if you want to define your own password and shared volume:
 docker run --rm -it -p 8888:8888 -v $(pwd)/data:/notebooks -e PASSWORD="password" ghcr.io/vemonet/jupyterlab
 ```
 
-The container will install requirements from files present at the root of the repository at `docker run` (in this order):
-
-* `packages.txt`: install apt-get packages
-* `requirements.txt`: install pip packages
-* `extensions.txt`: install Jupyterlab extensions
-
 ### Run from Git repository
 
 You can provide a Git repository to be cloned in `/notebooks` when starting the container (it will automatically install packages if `requirements.txt`, `packages.txt` or `extensions.txt` are present at the root of the repository).
 
 ```bash
-docker run --rm -it -p 8888:8888 -v /data/jupyterlab-notebooks:/notebooks -e PASSWORD="<your_secret>" -e GIT_URL="https://github.com/vemonet/translator-sparql-notebook" amalic/jupyterlab:latest
+docker run --rm -it -p 8888:8888 -v /data/jupyterlab-notebooks:/notebooks -e PASSWORD="<your_secret>" -e GIT_URL="https://github.com/vemonet/translator-sparql-notebook" ghcr.io/vemonet/jupyterlab:latest
 ```
 
 > Access on http://localhost:8888 and files shared in `/data/jupyterlab-notebooks`
@@ -62,7 +55,7 @@ docker run --rm -it -p 8888:8888 -v /data/jupyterlab-notebooks:/notebooks -e PAS
 or use the current directory as source code in the container:
 
 ```bash
-docker run --rm -it -p 8888:8888 -v $(pwd):/notebooks -e PASSWORD="<your_secret>" amalic/jupyterlab:latest
+docker run --rm -it -p 8888:8888 -v $(pwd):/notebooks -e PASSWORD="<your_secret>" ghcr.io/vemonet/jupyterlab:latest
 ```
 
 > Use `${pwd}` for Windows
