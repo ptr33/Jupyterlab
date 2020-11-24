@@ -8,7 +8,7 @@
 
 #### Installed kernels
 
-* Python with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
+* Python 3.8 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
 * [IJava](https://github.com/SpencerPark/IJava)
 * [SPARQL kernel](https://github.com/paulovn/sparql-kernel)
 
@@ -25,7 +25,9 @@
 
 ### Your notebooks
 
-Volumes can be mounted into `/notebooks` folder. The container will install requirements from files present in the `/notebooks` folder when it starts up (in this order):
+Volumes can be mounted into `/notebooks` folder.
+
+The container will install requirements from files present in the `/notebooks` folder when it starts up (in this order):
 
 - `packages.txt`: install apt-get packages
 - `requirements.txt`: install pip packages
