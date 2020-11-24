@@ -6,6 +6,12 @@
 
 **This Docker container runs as root user!** It can be helpful when e.g. the popular jupyter/datascience-notebook image does not work because it runs as Jovyan user. 
 
+#### Installed kernels
+
+* Python with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
+* [IJava](https://github.com/SpencerPark/IJava)
+* [SPARQL kernel](https://github.com/paulovn/sparql-kernel)
+
 #### Installed Jupyterlab extensions
 - [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Basics.html)
 - [@jupyterlab/git](https://www.npmjs.com/package/@jupyterlab/git)
@@ -80,7 +86,7 @@ services:
 
 ### Build from source
 
-Clone the repository first, then build the container image:
+Clone the repository, then build the container image:
 
 ```bash
 docker build -t ghcr.io/vemonet/jupyterlab .
