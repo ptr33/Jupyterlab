@@ -1,70 +1,71 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/amalic/Jupyterlab/blob/master/LICENSE)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/amalic/jupyterlab.svg)](https://hub.docker.com/r/amalic/jupyterlab/builds)
-[![Docker Pulls](https://img.shields.io/docker/pulls/amalic/jupyterlab.svg)](https://hub.docker.com/r/amalic/jupyterlab/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/vemonet/Jupyterlab/blob/master/LICENSE)
+[![Publish Docker image](https://github.com/vemonet/Jupyterlab/workflows/Publish%20Docker%20image/badge.svg)](https://github.com/users/vemonet/packages/container/package/jupyterlab)
 
 
 ## Jupyterlab Docker container
 
-**This Docker container runs as root user!** It can be helpful when e.g. the popular jupyter/datascience-notebook image does not work because it runs as Jovyan user. 
+JupyterLab image based on the [jupyter/docker-stack](jupyter/docker-stack) scipy image
+
+#### Installed kernels
+
+* Python 3.8 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
+* [IJava](https://github.com/SpencerPark/IJava) with current default JDK
+* [SPARQL kernel](https://github.com/paulovn/sparql-kernel)
 
 #### Installed Jupyterlab extensions
-- [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Basics.html)
-- [@jupyterlab/latex](https://github.com/jupyterlab/jupyterlab-latex)
-- [jupyterlab-plotly](https://www.npmjs.com/package/jupyterlab-plotly)
-- [jupyterlab-drawio](https://github.com/QuantStack/jupyterlab-drawio)
-- [jupyterlab-spreadsheet](https://github.com/quigleyj97/jupyterlab-spreadsheet)
-- [@bokeh/jupyter_bokeh](https://github.com/bokeh/jupyter_bokeh)
-- [@jupyterlab/toc](https://www.npmjs.com/package/@jupyterlab/toc)
-- [@jupyterlab/git](https://www.npmjs.com/package/@jupyterlab/git)
-- [@krassowski/jupyterlab-lsp](https://github.com/krassowski/jupyterlab-lsp)
 
-### Your notebooks
+- [jupyterlab-git](https://github.com/jupyterlab/jupyterlab-git)
+- [jupyterlab-lsp](https://github.com/krassowski/jupyterlab-lsp)
 
-Volumes can be mounted into `/notebooks` folder. If the folder contains a requirements.txt file, it will be installed automatically when the container starts up.
+Volumes can be mounted into `/home/jovyan` folder.
 
 ---
 
 ### Pull/Update to latest version
+
 ```bash
-docker pull umids/jupyterlab:latest
+docker pull ghcr.io/vemonet/jupyterlab:latest
 ```
 
 ### Run
-```bash
-docker run --rm -it -p 8888:8888 umids/jupyterlab
-```
-
-or if you want to define your own password
-```bash
-docker run --rm -it -p 8888:8888 -e PASSWORD="<your_secret>" umids/jupyterlab
-```
-
-The container will install requirements from files present at the root of the repository at `docker run` (in this order):
-
-* `packages.txt`: install apt-get packages
-* `requirements.txt`: install pip packages
-* `extensions.txt`: install Jupyterlab extensions
-
-### Run from Git repository
-
-You can provide a Git repository to be cloned in `/notebooks` when doing `docker run`
 
 ```bash
-docker run --rm -it -p 8888:8888 -v /data/jupyterlab-notebooks:/notebooks -e PASSWORD="<your_secret>" -e GIT_URL="https://github.com/vemonet/translator-sparql-notebook" umids/jupyterlab:latest
+docker run --rm -it -p 8888:8888 ghcr.io/vemonet/jupyterlab
 ```
 
-> Access on http://localhost:8888 and files shared in `/data/jupyterlab-notebooks`
-
-or use the current directory as source code in the container:
+or if you want to define your own password, run with `sudo` privileges, and share the current directory as a volume:
 
 ```bash
-docker run --rm -it -p 8888:8888 -v $(pwd):/notebooks -e PASSWORD="<your_secret>" umids/jupyterlab:latest
+docker run --rm -it -p 8888:8888 -u root -e GRANT_SUDO=yes -v $(pwd)/data:/home/jovyan -e JUPYTER_TOKEN="password" ghcr.io/vemonet/jupyterlab
 ```
 
-> Use `${pwd}` for Windows
+> Use `${pwd}` for Windows current directory
+
+### Run with docker-compose
+
+Add JupyterLab to a `docker-compose.yml` file:
+
+```yaml
+services:
+  jupyterlab:
+    container_name: jupyterlab
+    image: ghcr.io/vemonet/jupyterlab
+    ports:
+      - 8888:8888
+    volumes:
+      - ./data:/home/jovyan
+    environment:
+      - JUPYTER_TOKEN=mypassword
+```
+
+### Run on Kubernetes OpenShift
+
+Checkout the provided OpenShift template in `template-jupyterlab-root.yml` to easily deploy this JupyterLab with `sudo` permissions (require the `anyuid` service account to be present). This template can be used with most images based on the [jupyter/docker-stack](jupyter/docker-stack).
 
 ### Build from source
 
+Clone the repository, then build the container image:
+
 ```bash
-docker build -t umids/jupyterlab .
+docker build -t ghcr.io/vemonet/jupyterlab .
 ```

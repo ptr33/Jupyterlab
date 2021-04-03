@@ -1,52 +1,48 @@
-FROM python:3
+FROM jupyter/scipy-notebook:latest
 
-RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
-  bash ~/.bash_it/install.sh --silent
+ENV JUPYTER_ENABLE_LAB=yes
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-  apt-get upgrade -y && \
-  apt-get install -y nodejs texlive-latex-extra texlive-xetex && \
-  rm -rf /var/lib/apt/lists/*
+RUN npm install --global yarn
+
+# Install jupyterlab git and autocomplete extensions
+RUN conda install --quiet --yes \
+    ipywidgets \
+    jupyterlab-lsp \
+    jupyter-lsp-python \
+    jupyterlab-git \
+    rise && \
+  fix-permissions $CONDA_DIR && \
+  fix-permissions /home/$NB_USER
 
 RUN pip install --upgrade pip && \
-  pip install --upgrade \
-    jupyterlab>=2.0.0 \
-    ipywidgets \
-    jedi==0.15.2 \ 
-    # jupyterlab-lsp does not support 0.17
-    jupyterlab_latex \
-    plotly \
-    bokeh \
-    numpy \
-    scipy \
-    numexpr \
-    patsy \
-    scikit-learn \
-    scikit-image \
-    matplotlib \
-    ipython \
-    pandas \
-    sympy \
-    seaborn \
-    nose \
-    # jupyter-lsp \
-    # python-language-server \
-    jupyterlab-git && \
-  jupyter labextension install \
-    @jupyter-widgets/jupyterlab-manager \
-    @jupyterlab/latex \
-    jupyterlab-drawio \ 
-    jupyterlab-plotly \
-    @bokeh/jupyter_bokeh \
-    # @krassowski/jupyterlab-lsp \
-    @jupyterlab/git \
-    jupyterlab-spreadsheet 
-    
+    pip install --upgrade \
+      sparqlkernel
 
-COPY bin/entrypoint.sh /usr/local/bin/
-COPY config/ /root/.jupyter/
+# Change to root user to install things
+USER root
 
-EXPOSE 8888
-VOLUME /notebooks
-WORKDIR /notebooks
-ENTRYPOINT ["entrypoint.sh"]
+# Install SPARQL kernel
+RUN jupyter sparqlkernel install 
+
+# Install Java
+RUN apt-get update && \
+    apt-get install default-jdk curl -y
+
+# Nicer Bash terminal
+RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
+    bash ~/.bash_it/install.sh --silent
+
+# Install Ijava kernel
+RUN curl -L https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip > /opt/ijava-kernel.zip
+RUN unzip /opt/ijava-kernel.zip -d /opt/ijava-kernel && \
+  cd /opt/ijava-kernel && \
+  python3 install.py --sys-prefix && \
+  rm /opt/ijava-kernel.zip
+
+RUN fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+
+USER $NB_USER
+
+RUN jupyter labextension update --all
+RUN jupyter lab build 
