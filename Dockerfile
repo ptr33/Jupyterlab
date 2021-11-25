@@ -21,13 +21,13 @@ RUN pip install --upgrade pip && \
     ipywidgets \
     jupyter-lsp \
     python-language-server \
-    jupyterlab-git && \
+    jupyterlab-git \
+    jupyter_bokeh && \
   jupyter labextension install \
     @jupyter-widgets/jupyterlab-manager \
     @jupyterlab/latex \
     jupyterlab-drawio \ 
     jupyterlab-plotly \
-    @bokeh/jupyter_bokeh \
     @krassowski/jupyterlab-lsp \
     @jupyterlab/git \
     jupyterlab-spreadsheet 
