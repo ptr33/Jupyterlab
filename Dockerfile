@@ -22,9 +22,9 @@ RUN pip install --upgrade pip && \
     jupyter-lsp \
     python-language-server \
     jupyterlab-git \
-    jupyter_bokeh
+    jupyter_bokeh \
+    jupyterlab_widgets
 #  jupyter labextension install \
-#    @jupyter-widgets/jupyterlab-manager \
 #    @jupyterlab/latex \
 #    jupyterlab-drawio \ 
 #    jupyterlab-plotly \
