@@ -8,7 +8,7 @@
 
 #### Installed kernels
 
-* Python 3.10 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
+* Python 3.9 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
 * [IJava](https://github.com/SpencerPark/IJava)
 * [SPARQL kernel](https://github.com/paulovn/sparql-kernel)
 
