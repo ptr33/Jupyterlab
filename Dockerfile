@@ -17,20 +17,20 @@ RUN apt-get update -y && \
 # Install packages and extensions for JupyterLab
 RUN pip install --upgrade pip && \
   pip install --upgrade \
-    jupyterlab>=2.0.0 \
+    jupyterlab>=3.0.0 \
     ipywidgets \
     jupyter-lsp \
     python-language-server \
     jupyterlab-git \
-    jupyter_bokeh
-#  jupyter labextension install \
-#    @jupyter-widgets/jupyterlab-manager \
-#    @jupyterlab/latex \
-#    jupyterlab-drawio \ 
-#    jupyterlab-plotly \
-#    @krassowski/jupyterlab-lsp \
-#    @jupyterlab/git \
-#    jupyterlab-spreadsheet 
+    jupyter_bokeh \
+    jupyterlab_widgets \
+    jupyterlab_latex \
+    jupyterlab-drawio \
+    jupyterlab-lsp \
+    jupyterlab-git \
+    jupyterlab-spreadsheet-editor \
+    jupyter-dash
+# from plotly documentation: install jupyter-dash
 
 # Install SPARQL kernel
 RUN pip install sparqlkernel
