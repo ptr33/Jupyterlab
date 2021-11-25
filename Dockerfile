@@ -21,16 +21,16 @@ RUN pip install --upgrade pip && \
     ipywidgets \
     jupyter-lsp \
     python-language-server \
-    jupyterlab-git && \
-  jupyter labextension install \
-    @jupyter-widgets/jupyterlab-manager \
-    @jupyterlab/latex \
-    jupyterlab-drawio \ 
-    jupyterlab-plotly \
-    @bokeh/jupyter_bokeh \
-    @krassowski/jupyterlab-lsp \
-    @jupyterlab/git \
-    jupyterlab-spreadsheet 
+    jupyterlab-git \
+    jupyter_bokeh
+#  jupyter labextension install \
+#    @jupyter-widgets/jupyterlab-manager \
+#    @jupyterlab/latex \
+#    jupyterlab-drawio \ 
+#    jupyterlab-plotly \
+#    @krassowski/jupyterlab-lsp \
+#    @jupyterlab/git \
+#    jupyterlab-spreadsheet 
 
 # Install SPARQL kernel
 RUN pip install sparqlkernel
