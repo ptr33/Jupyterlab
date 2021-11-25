@@ -91,5 +91,7 @@ services:
 Clone the repository, then build the container image:
 
 ```bash
+git clone https://github.com/ptr33/Jupyterlab.git
+cd Jupyterlab
 docker build -t ghcr.io/ptr33/jupyterlab .
 ```
