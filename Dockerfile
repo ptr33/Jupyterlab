@@ -28,9 +28,8 @@ RUN pip install --upgrade pip && \
     jupyterlab-drawio \
     jupyterlab-lsp \
     jupyterlab-git \
-    jupyterlab-spreadsheet
-#  jupyter labextension install \
-#    jupyterlab-plotly \
+    jupyterlab-spreadsheet-editor
+    jupyterlab-plotly
 
 # Install SPARQL kernel
 RUN pip install sparqlkernel
