@@ -27,6 +27,7 @@ RUN pip install --upgrade pip && \
     jupyterlab_latex \
     jupyterlab-drawio \
     jupyterlab-lsp \
+    'python-lsp-server[all]' \
     jupyterlab-git \
     jupyterlab-spreadsheet-editor \
     jupyter-dash
