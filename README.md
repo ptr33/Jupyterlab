@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/amalic/Jupyterlab/blob/master/LICENSE)
-[![Publish Docker image](https://github.com/vemonet/Jupyterlab/workflows/Publish%20Docker%20image/badge.svg)](https://github.com/users/vemonet/packages/container/package/jupyterlab)
+[![Publish Docker image](https://github.com/ptr33/Jupyterlab/workflows/Publish%20Docker%20image/badge.svg)](https://github.com/users/ptr33/packages/container/package/jupyterlab)
 
 
 ## Jupyterlab Docker container
@@ -8,7 +8,7 @@
 
 #### Installed kernels
 
-* Python 3.8 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
+* Python 3.10 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
 * [IJava](https://github.com/SpencerPark/IJava)
 * [SPARQL kernel](https://github.com/paulovn/sparql-kernel)
 
@@ -37,17 +37,17 @@ The container will install requirements from files present in the `/notebooks` f
 
 ### Pull/Update to latest version
 ```bash
-docker pull ghcr.io/vemonet/jupyterlab:latest
+docker pull ghcr.io/ptr33/jupyterlab:latest
 ```
 
 ### Run
 ```bash
-docker run --rm -it -p 8888:8888 ghcr.io/vemonet/jupyterlab
+docker run --rm -it -p 8888:8888 ghcr.io/ptr33/jupyterlab
 ```
 
 or if you want to define your own password and shared volume:
 ```bash
-docker run --rm -it -p 8888:8888 -v $(pwd)/data:/notebooks -e PASSWORD="password" ghcr.io/vemonet/jupyterlab
+docker run --rm -it -p 8888:8888 -v $(pwd)/data:/notebooks -e PASSWORD="password" ghcr.io/ptr33/jupyterlab
 ```
 
 ### Run from Git repository
@@ -63,7 +63,7 @@ docker run --rm -it -p 8888:8888 -v /data/jupyterlab-notebooks:/notebooks -e PAS
 or use the current directory as source code in the container:
 
 ```bash
-docker run --rm -it -p 8888:8888 -v $(pwd):/notebooks -e PASSWORD="<your_secret>" ghcr.io/vemonet/jupyterlab:latest
+docker run --rm -it -p 8888:8888 -v $(pwd):/notebooks -e PASSWORD="<your_secret>" ghcr.io/ptr33/jupyterlab:latest
 ```
 
 > Use `${pwd}` for Windows
@@ -76,7 +76,7 @@ Add JupyterLab to a `docker-compose.yml` file:
 services:
   jupyterlab:
     container_name: jupyterlab
-    image: ghcr.io/vemonet/jupyterlab
+    image: ghcr.io/ptr33/jupyterlab
     ports:
       - 8888:8888
     volumes:
@@ -91,5 +91,7 @@ services:
 Clone the repository, then build the container image:
 
 ```bash
-docker build -t ghcr.io/vemonet/jupyterlab .
+git clone https://github.com/ptr33/Jupyterlab.git
+cd Jupyterlab
+docker build -t ghcr.io/ptr33/jupyterlab .
 ```

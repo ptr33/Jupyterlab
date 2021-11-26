@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.10
 
 # Install nicer Bash terminal
 RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
@@ -17,20 +17,21 @@ RUN apt-get update -y && \
 # Install packages and extensions for JupyterLab
 RUN pip install --upgrade pip && \
   pip install --upgrade \
-    jupyterlab>=2.0.0 \
+    jupyterlab>=3.0.0 \
     ipywidgets \
     jupyter-lsp \
     python-language-server \
-    jupyterlab-git && \
-  jupyter labextension install \
-    @jupyter-widgets/jupyterlab-manager \
-    @jupyterlab/latex \
-    jupyterlab-drawio \ 
-    jupyterlab-plotly \
-    @bokeh/jupyter_bokeh \
-    @krassowski/jupyterlab-lsp \
-    @jupyterlab/git \
-    jupyterlab-spreadsheet 
+    jupyterlab-git \
+    jupyter_bokeh \
+    jupyterlab_widgets \
+    jupyterlab_latex \
+    jupyterlab-drawio \
+    jupyterlab-lsp \
+    'python-lsp-server[all]' \
+    jupyterlab-git \
+    jupyterlab-spreadsheet-editor \
+    jupyter-dash
+# from plotly documentation: install jupyter-dash
 
 # Install SPARQL kernel
 RUN pip install sparqlkernel
