@@ -10,9 +10,10 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
   apt-get install -y nodejs texlive-latex-extra texlive-xetex && \
   rm -rf /var/lib/apt/lists/*
 
-# Install Java
+# Install Java and Kite
 RUN apt-get update -y && \
-    apt-get install default-jdk -y
+    apt-get install default-jdk -y && \
+    bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
 
 # Install packages and extensions for JupyterLab
 RUN pip install --upgrade pip && \
@@ -30,7 +31,8 @@ RUN pip install --upgrade pip && \
     'python-lsp-server[all]' \
     jupyterlab-git \
     jupyterlab-spreadsheet-editor \
-    jupyter-dash
+    jupyter-dash \
+    "jupyterlab-kite>=2.0.2"
 # from plotly documentation: install jupyter-dash
 
 # Install SPARQL kernel
