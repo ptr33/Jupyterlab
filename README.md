@@ -21,7 +21,7 @@
 - [jupyterlab-drawio](https://github.com/QuantStack/jupyterlab-drawio)
 - [jupyterlab-spreadsheet](https://github.com/quigleyj97/jupyterlab-spreadsheet)
 - [@bokeh/jupyter_bokeh](https://github.com/bokeh/jupyter_bokeh)
-- [@jupyterlab/toc](https://www.npmjs.com/package/@jupyterlab/toc)
+- [jupyterlab-kite](https://www.kite.com/linux)
 
 ### Your notebooks
 
