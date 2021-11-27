@@ -34,6 +34,24 @@ RUN pip install --upgrade pip && \
     "jupyterlab-kite>=2.0.2"
 # from plotly documentation: install jupyter-dash
 
+# for kite
+RUN curl -sL https://deb.nodesource.com/setup_12.x |bash - \
+    && apt-get install -y --no-install-recommends \
+    wget \
+    git \
+    vim \
+    curl \
+    make \
+    cmake \
+    nodejs \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf \
+        /var/lib/apt/lists/* \
+        /var/cache/apt/* \
+        /usr/local/src/* \
+        /tmp/*
+        
 # install jupyter-kite
 RUN cd && \
     wget https://linux.kite.com/dls/linux/current && \
