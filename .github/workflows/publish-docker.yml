@@ -1,12 +1,10 @@
 name: Publish Docker image
 
 # To use this workflow:
-# * Add secrets CONTAINER_REGISTRY_GITHUB_TOKEN to your GitHub repository
-# * Change the IMAGE_NAME to yours
 # * Enable automated build if you wish
 
 env:
-  IMAGE_NAME: jupyterlab
+  IMAGE_NAME: ${{ github.repository }}
 
 on:
   workflow_dispatch:
