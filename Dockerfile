@@ -58,6 +58,11 @@ COPY bin/entrypoint.sh /usr/local/bin/
 COPY config/jupyter_notebook_config.py /root/.jupyter/
 # COPY config/ /root/.jupyter/
 
+# install python library
+COPY requirements.txt .
+RUN pip3 install --upgrade pip && \
+    pip3 install --no-cache-dir -r requirements.txt \
+    && rm -rf ~/.cache/pip
 
 EXPOSE 8888
 VOLUME /notebooks
