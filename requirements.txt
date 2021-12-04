@@ -4,6 +4,8 @@ pandas
 matplotlib
 seaborn
 scipy
+# for %matplotlib widget to work install following:
+ipympl
 # scikit-learn
 # lightgbm
 # xgboost
