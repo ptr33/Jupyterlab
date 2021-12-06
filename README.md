@@ -6,6 +6,8 @@
 
 **This Docker container runs as root user!** It can be helpful when e.g. the popular jupyter/datascience-notebook image does not work because it runs as Jovyan user. 
 
+Additional packages can be installed on creation of container by adding to requirements.txt.
+
 #### Installed kernels
 
 * Python 3.10 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
