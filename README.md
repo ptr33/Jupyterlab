@@ -24,6 +24,7 @@ Additional packages can be installed on creation of container by adding to requi
 - [jupyterlab-spreadsheet](https://github.com/quigleyj97/jupyterlab-spreadsheet)
 - [@bokeh/jupyter_bokeh](https://github.com/bokeh/jupyter_bokeh)
 - [@jupyterlab/toc](https://www.npmjs.com/package/@jupyterlab/toc)
+- [lckr-jupyterlab-variableinspector](https://github.com/lckr/jupyterlab-variableInspector)
 
 ### Your notebooks
 
