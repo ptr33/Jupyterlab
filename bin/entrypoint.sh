@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CMD="jupyter lab --allow-root --ip=0.0.0.0 --no-browser"
+CMD="jupyter lab --allow-root --ip=0.0.0.0 --no-browser --ServerApp.base_url=/jupyter"
 
 if [[ -v PASSWORD ]]; then
   PASSWORD=$(python -c "import IPython; print(IPython.lib.security.passwd('$PASSWORD'))")
