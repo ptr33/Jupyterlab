@@ -30,7 +30,8 @@ RUN pip install --upgrade pip && \
     'python-lsp-server[all]' \
     jupyterlab-git \
     jupyterlab-spreadsheet-editor \
-    jupyter-dash
+    jupyter-dash \
+    lckr-jupyterlab-variableinspector
 # from plotly documentation: install jupyter-dash
 
 # Install SPARQL kernel
