@@ -11,8 +11,6 @@ Additional packages can be installed on creation of container by adding to requi
 #### Installed kernels
 
 * Python 3.10 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
-* [IJava](https://github.com/SpencerPark/IJava)
-* [SPARQL kernel](https://github.com/paulovn/sparql-kernel)
 
 #### Installed Jupyterlab extensions
 - [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Basics.html)
@@ -58,7 +56,7 @@ docker run --rm -it -p 8888:8888 -v $(pwd)/data:/notebooks -e PASSWORD="password
 You can provide a Git repository to be cloned in `/notebooks` when starting the container (it will automatically install packages if `requirements.txt`, `packages.txt` or `extensions.txt` are present at the root of the repository).
 
 ```bash
-docker run --rm -it -p 8888:8888 -v /data/jupyterlab-notebooks:/notebooks -e PASSWORD="<your_secret>" -e GIT_URL="https://github.com/vemonet/translator-sparql-notebook" ghcr.io/vemonet/jupyterlab:latest
+docker run --rm -it -p 8888:8888 -v /data/jupyterlab-notebooks:/notebooks -e PASSWORD="<your_secret>" -e GIT_URL="https://github.com/vemonet/translator-sparql-notebook" ghcr.io/ptr33/jupyterlab:latest
 ```
 
 > Access on http://localhost:8888 and files shared in `/data/jupyterlab-notebooks`
