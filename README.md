@@ -8,6 +8,8 @@
 
 Additional packages can be installed on creation of container by adding to requirements.txt.
 
+Changed base url to make operation behind appache reverse proxy easier: http://localhost:8888/jupyter
+
 #### Installed kernels
 
 * Python 3.10 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
@@ -59,7 +61,7 @@ You can provide a Git repository to be cloned in `/notebooks` when starting the 
 docker run --rm -it -p 8888:8888 -v /data/jupyterlab-notebooks:/notebooks -e PASSWORD="<your_secret>" -e GIT_URL="https://github.com/vemonet/translator-sparql-notebook" ghcr.io/ptr33/jupyterlab:latest
 ```
 
-> Access on http://localhost:8888 and files shared in `/data/jupyterlab-notebooks`
+> Access on http://localhost:8888/jupyter and files shared in `/data/jupyterlab-notebooks`
 
 or use the current directory as source code in the container:
 
