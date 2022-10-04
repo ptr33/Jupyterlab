@@ -25,6 +25,7 @@ Changed base url to make operation behind appache reverse proxy easier: http://l
 - [@bokeh/jupyter_bokeh](https://github.com/bokeh/jupyter_bokeh)
 - [@jupyterlab/toc](https://www.npmjs.com/package/@jupyterlab/toc)
 - [lckr-jupyterlab-variableinspector](https://github.com/lckr/jupyterlab-variableInspector)
+- [jupyterlab-filesystem-access](https://github.com/jupyterlab-contrib/jupyterlab-filesystem-access)
 
 ### Your notebooks
 
