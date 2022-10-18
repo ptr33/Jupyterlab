@@ -30,6 +30,8 @@ RUN pip install --upgrade pip && \
     lckr-jupyterlab-variableinspector
 # from plotly documentation: install jupyter-dash
 
+WORKDIR /opt/pypy
+
 # install python library
 COPY requirements.txt .
 RUN pip3 install --upgrade pip && \
@@ -40,6 +42,18 @@ RUN pip3 install --upgrade pip && \
 
 RUN jupyter labextension install jupyterlab-filesystem-access && \
     jupyter lab build
+
+# install pypy and all libraries
+RUN wget https://downloads.python.org/pypy/pypy3.9-v7.3.9-linux64.tar.bz2 && \
+    tar -xjf pypy3.9-v7.3.9-linux64.tar.bz2  && \
+    cd pypy3.9-v7.3.9-linux64/bin && \
+    ./pypy3 -m ensurepip && \
+    ./pypy3 -m pip install --upgrade pip && \
+    apt-get install -y gfortran libopenblas-dev && \
+    ./pypy3 -m pip install ipykernel && \
+    ./ipython kernel install --user --name=PyPy3 && \
+    jupyter kernelspec list && \
+    ./pypy3 -m pip install -r /opt/pypy/requirements.txt
 
 COPY bin/entrypoint.sh /usr/local/bin/
 COPY config/jupyter_notebook_config.py /root/.jupyter/
