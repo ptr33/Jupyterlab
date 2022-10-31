@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11
 
 # Install nicer Bash terminal
 RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
