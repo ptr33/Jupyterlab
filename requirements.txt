@@ -3,7 +3,7 @@ numpy
 pandas
 matplotlib
 seaborn
-scipy
+# scipy  # seems to break python3.11 installation
 # for %matplotlib widget to work install following:
 ipympl
 # scikit-learn

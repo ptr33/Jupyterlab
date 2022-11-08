@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11
 
 # Install nicer Bash terminal
 RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
@@ -38,7 +38,8 @@ RUN pip3 install --upgrade pip && \
     apt-get update && \
     apt-get install -y pandoc
 
-RUN jupyter lab build 
+RUN jupyter labextension install jupyterlab-filesystem-access && \
+    jupyter lab build
 
 COPY bin/entrypoint.sh /usr/local/bin/
 COPY config/jupyter_notebook_config.py /root/.jupyter/
