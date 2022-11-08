@@ -1,14 +1,24 @@
-FROM python:3.10
+FROM python:3.11
 
 # Install nicer Bash terminal
 RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
   bash ~/.bash_it/install.sh --silent
 
-# Install NodeJS 14
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+# Install NodeJS 18
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
   apt-get upgrade -y && \
   apt-get install -y nodejs texlive-latex-extra texlive-xetex && \
   rm -rf /var/lib/apt/lists/*
+
+
+# install Rust (needed for y-py) - see https://rustup.rs/
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# Add .cargo/bin to PATH
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# Check cargo is visible
+RUN cargo --help
 
 # Install packages and extensions for JupyterLab
 RUN pip install --upgrade pip && \
