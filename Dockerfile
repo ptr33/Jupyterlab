@@ -38,6 +38,7 @@ RUN pip install --upgrade pip && \
     jupyterlab-spreadsheet-editor \
     jupyter-dash \
     lckr-jupyterlab-variableinspector
+    
 # from plotly documentation: install jupyter-dash
 
 # install python library
@@ -49,6 +50,7 @@ RUN pip3 install --upgrade pip && \
     apt-get install -y pandoc
 
 RUN jupyter labextension install jupyterlab-filesystem-access && \
+    jupyter labextension install jupyterlab-spreadsheet && \
     jupyter lab build
 
 COPY bin/entrypoint.sh /usr/local/bin/

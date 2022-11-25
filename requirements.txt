@@ -12,4 +12,7 @@ ipympl
 # keras
 # for exporting html files without code
 jupyterlab-nbconvert-nocode
-
+XlsxWriter
+openpyxl
+mpld3
+statistics
