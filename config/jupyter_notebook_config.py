@@ -1,5 +1,8 @@
 ## Configuration file for jupyter-notebook.
 
+# disable xsrf checking - this cause vscode to fail
+c.NotebookApp.disable_check_xsrf = True
+
 ## Supply overrides for terminado. Currently only supports "shell_command".
 c.NotebookApp.terminado_settings = {'shell_command': ['/bin/bash']}
 
