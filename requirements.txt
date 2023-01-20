@@ -16,3 +16,5 @@ XlsxWriter
 openpyxl
 mpld3
 statistics
+open3d
+
