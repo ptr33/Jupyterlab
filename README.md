@@ -6,6 +6,8 @@
 
 **This Docker container runs as root user!** It can be helpful when e.g. the popular jupyter/datascience-notebook image does not work because it runs as Jovyan user. 
 
+This docker container installs jupyter-dash directly from the github sources.
+
 Additional packages can be installed on creation of container by adding to requirements.txt.
 
 Changed base url to make operation behind appache reverse proxy easier: http://localhost:8888/jupyter

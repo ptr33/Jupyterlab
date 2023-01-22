@@ -36,7 +36,6 @@ RUN pip install --upgrade pip && \
     'python-lsp-server[all]' \
     jupyterlab-git \
     jupyterlab-spreadsheet-editor \
-    jupyter-dash \
     lckr-jupyterlab-variableinspector
     
 # from plotly documentation: install jupyter-dash
@@ -48,6 +47,18 @@ RUN pip3 install --upgrade pip && \
     && rm -rf ~/.cache/pip && \
     apt-get update && \
     apt-get install -y pandoc
+
+# install jupyter-dash from repo - https://github.com/plotly/jupyter-dash
+WORKDIR /home/jupyter-dash
+RUN git clone https://github.com/plotly/jupyter-dash.git
+WORKDIR jupyter-dash
+RUN pip3 install -r requirements.txt -r requirements-dev.txt && \
+    pip3 install -e . a && \
+    jupyter nbextension install --sys-prefix --symlink --py jupyter_dash && \
+    jupyter nbextension enable --py jupyter_dash && \
+    jupyter labextension link extensions/jupyterlab && \
+    python setup.py build_js
+
 
 RUN jupyter labextension install jupyterlab-filesystem-access && \
     jupyter labextension install jupyterlab-spreadsheet && \
