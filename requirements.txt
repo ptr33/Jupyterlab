@@ -16,3 +16,11 @@ XlsxWriter
 openpyxl
 mpld3
 statistics
+# packages for smartmeter interface and huawei-solar
+pyserial
+cryptography
+dsmr_parser
+pycryptodomex
+fhem
+## for huawei-solar
+pymodbus
