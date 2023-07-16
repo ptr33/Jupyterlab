@@ -24,3 +24,4 @@ pycryptodomex
 fhem
 ## for huawei-solar
 pymodbus
+backoff
