@@ -49,5 +49,13 @@ echo
 echo "Installed Juypter extensions"
 jupyter labextension list
 
+if [ -f /notebooks/autostart ]; then
+  echo "INFO: Found autostart file in folder /notebooks. Executing it."
+  cd /notebooks
+  ./autostart &
+else
+  echo "INFO: No autostart file in folder /notebooks found."
+fi
+
 echo
 exec $CMD "$@"
