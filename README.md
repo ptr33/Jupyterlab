@@ -1,7 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/amalic/Jupyterlab/blob/master/LICENSE)
 [![Publish Docker image](https://github.com/ptr33/Jupyterlab/workflows/Publish%20Docker%20image/badge.svg)](https://github.com/users/ptr33/packages/container/package/jupyterlab)
 
-
 ## Jupyterlab Docker container
 
 **This Docker container runs as root user!** It can be helpful when e.g. the popular jupyter/datascience-notebook image does not work because it runs as Jovyan user. 
@@ -11,6 +10,9 @@ This docker container installs jupyter-dash directly from the github sources.
 Additional packages can be installed on creation of container by adding to requirements.txt.
 
 Changed base url to make operation behind appache reverse proxy easier: http://localhost:8888/jupyter
+
+### Autostart function
+If /notebooks/autostart exists, it will be automatically started with the Jupyterlab container.
 
 #### Installed kernels
 
