@@ -22,6 +22,6 @@ cryptography
 dsmr_parser
 pycryptodomex
 fhem
-## for huawei-solar
-pymodbus
+## for huawei-solar; version 2.3.0 needs newer pymodbus version
+pymodbus>=3.6.6,<3.7
 backoff
