@@ -16,7 +16,7 @@ If /notebooks/autostart exists, it will be automatically started with the Jupyte
 
 #### Installed kernels
 
-* Python 3.11 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
+* Python 3.13 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
 
 #### Installed Jupyterlab extensions
 - [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Basics.html)

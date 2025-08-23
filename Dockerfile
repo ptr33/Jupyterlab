@@ -1,11 +1,11 @@
-FROM python:3.11
+FROM python:3.13
 
 # Install nicer Bash terminal
 RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
   bash ~/.bash_it/install.sh --silent
 
-# Install NodeJS 18
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
+# Install NodeJS 22
+RUN curl -sL https://deb.nodesource.com/setup_22.x | bash - && \
   apt-get upgrade -y && \
   apt-get install -y nodejs texlive-latex-extra texlive-xetex && \
   rm -rf /var/lib/apt/lists/*
@@ -23,7 +23,7 @@ RUN cargo --help
 # Install packages and extensions for JupyterLab
 RUN pip install --upgrade pip && \
   pip install --upgrade \
-    jupyterlab>=3.0.0 \
+    jupyterlab>=4 \
     ipywidgets \
     jupyter-lsp \
     python-language-server \
