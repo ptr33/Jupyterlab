@@ -6,10 +6,6 @@ seaborn
 scipy
 # for %matplotlib widget to work install following:
 ipympl
-# scikit-learn
-# lightgbm
-# xgboost
-# keras
 # for exporting html files without code
 jupyterlab-nbconvert-nocode
 XlsxWriter
@@ -22,7 +18,8 @@ cryptography
 dsmr_parser
 pycryptodomex
 fhem
-## for huawei-solar; version 2.3.0 needs newer pymodbus version
+dash
+# see https://github.com/wlcrs/huawei_solar/issues/1065 - need older version of pymodbus
+pymodbus==3.9.2
 huawei-solar
-# pymodbus>=3.6.6,<3.7 - will be automatically included by huawei-solar
-# backoff
+paho-mqtt
