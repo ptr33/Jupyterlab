@@ -1,11 +1,11 @@
-FROM python:3.11
+FROM python:3.13
 
 # Install nicer Bash terminal
 RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
   bash ~/.bash_it/install.sh --silent
 
-# Install NodeJS 18
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
+# Install NodeJS 22
+RUN curl -sL https://deb.nodesource.com/setup_22.x | bash - && \
   apt-get upgrade -y && \
   apt-get install -y nodejs texlive-latex-extra texlive-xetex && \
   rm -rf /var/lib/apt/lists/*
@@ -23,7 +23,7 @@ RUN cargo --help
 # Install packages and extensions for JupyterLab
 RUN pip install --upgrade pip && \
   pip install --upgrade \
-    jupyterlab>=3.0.0 \
+    jupyterlab>=4.4.6 \
     ipywidgets \
     jupyter-lsp \
     python-language-server \
@@ -31,14 +31,12 @@ RUN pip install --upgrade pip && \
     jupyter_bokeh \
     jupyterlab_widgets \
     jupyterlab_latex \
-    jupyterlab-drawio \
-    jupyterlab-lsp \
     'python-lsp-server[all]' \
     jupyterlab-git \
     jupyterlab-spreadsheet-editor \
-    jupyter-dash \
-    lckr-jupyterlab-variableinspector
-# from plotly documentation: install jupyter-dash
+    lckr-jupyterlab-variableinspector \
+    jupyterlab-filesystem-access \
+    jupyterlab-lsp
 
 # install python library
 COPY requirements.txt .
@@ -48,8 +46,7 @@ RUN pip3 install --upgrade pip && \
     apt-get update && \
     apt-get install -y pandoc
 
-RUN jupyter labextension install jupyterlab-filesystem-access && \
-    jupyter lab build
+RUN jupyter lab build
 
 COPY bin/entrypoint.sh /usr/local/bin/
 COPY config/jupyter_notebook_config.py /root/.jupyter/

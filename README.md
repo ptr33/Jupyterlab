@@ -12,9 +12,10 @@ Changed base url to make operation behind appache reverse proxy easier: http://l
 
 #### Installed kernels
 
-* Python 3.11 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
+* Python 3.13 with autocomplete and suggestions ([LSP](https://github.com/krassowski/jupyterlab-lsp))
 
 #### Installed Jupyterlab extensions
+- Jupyterlab 4.4.6
 - [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Basics.html)
 - [@jupyterlab/git](https://www.npmjs.com/package/@jupyterlab/git)
 - [@krassowski/jupyterlab-lsp](https://github.com/krassowski/jupyterlab-lsp)
