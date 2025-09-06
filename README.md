@@ -18,10 +18,9 @@ Changed base url to make operation behind appache reverse proxy easier: http://l
 - Jupyterlab 4.4.6
 - [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Basics.html)
 - [@jupyterlab/git](https://www.npmjs.com/package/@jupyterlab/git)
-- [@krassowski/jupyterlab-lsp](https://github.com/krassowski/jupyterlab-lsp)
+- jedi-language-server
 - [@jupyterlab/latex](https://github.com/jupyterlab/jupyterlab-latex)
 - [jupyterlab-plotly](https://www.npmjs.com/package/jupyterlab-plotly)
-- [jupyterlab-drawio](https://github.com/QuantStack/jupyterlab-drawio)
 - [jupyterlab-spreadsheet](https://github.com/quigleyj97/jupyterlab-spreadsheet)
 - [@bokeh/jupyter_bokeh](https://github.com/bokeh/jupyter_bokeh)
 - [@jupyterlab/toc](https://www.npmjs.com/package/@jupyterlab/toc)

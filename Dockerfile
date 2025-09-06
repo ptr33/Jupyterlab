@@ -25,18 +25,16 @@ RUN pip install --upgrade pip && \
   pip install --upgrade \
     jupyterlab>=4.4.6 \
     ipywidgets \
-    jupyter-lsp \
-    python-language-server \
     jupyterlab-git \
     jupyter_bokeh \
     jupyterlab_widgets \
     jupyterlab_latex \
-    'python-lsp-server[all]' \
     jupyterlab-git \
+    jupyterlab-lsp \
+    jedi-language-server \
     jupyterlab-spreadsheet-editor \
     lckr-jupyterlab-variableinspector \
-    jupyterlab-filesystem-access \
-    jupyterlab-lsp
+    jupyterlab-filesystem-access
 
 # install python library
 COPY requirements.txt .
@@ -57,24 +55,3 @@ VOLUME /notebooks
 WORKDIR /notebooks
 ENTRYPOINT ["entrypoint.sh"]
 
-
-
-## Old pip install for data science:
-
-    # jedi==0.15.2 \ 
-    # # jupyterlab-lsp does not support 0.17
-    # jupyterlab_latex \
-    # plotly \
-    # bokeh \
-    # numpy \
-    # scipy \
-    # numexpr \
-    # patsy \
-    # scikit-learn \
-    # scikit-image \
-    # matplotlib \
-    # ipython \
-    # pandas \
-    # sympy \
-    # seaborn \
-    # nose \
