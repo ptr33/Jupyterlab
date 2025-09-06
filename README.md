@@ -5,8 +5,6 @@
 
 **This Docker container runs as root user!** It can be helpful when e.g. the popular jupyter/datascience-notebook image does not work because it runs as Jovyan user. 
 
-This docker container installs jupyter-dash directly from the github sources.
-
 Additional packages can be installed on creation of container by adding to requirements.txt.
 
 Changed base url to make operation behind appache reverse proxy easier: http://localhost:8888/jupyter
@@ -21,10 +19,9 @@ If /notebooks/autostart exists, it will be automatically started with the Jupyte
 #### Installed Jupyterlab extensions
 - [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Basics.html)
 - [@jupyterlab/git](https://www.npmjs.com/package/@jupyterlab/git)
-- [@krassowski/jupyterlab-lsp](https://github.com/krassowski/jupyterlab-lsp)
+- jedi-language-server
 - [@jupyterlab/latex](https://github.com/jupyterlab/jupyterlab-latex)
 - [jupyterlab-plotly](https://www.npmjs.com/package/jupyterlab-plotly)
-- [jupyterlab-drawio](https://github.com/QuantStack/jupyterlab-drawio)
 - [jupyterlab-spreadsheet](https://github.com/quigleyj97/jupyterlab-spreadsheet)
 - [@bokeh/jupyter_bokeh](https://github.com/bokeh/jupyter_bokeh)
 - [@jupyterlab/toc](https://www.npmjs.com/package/@jupyterlab/toc)

@@ -25,21 +25,17 @@ RUN pip install --upgrade pip && \
   pip install --upgrade \
     jupyterlab>=4.4.6 \
     ipywidgets \
-    jupyter-lsp \
-    python-language-server \
     jupyterlab-git \
     jupyter_bokeh \
     jupyterlab_widgets \
     jupyterlab_latex \
     jupyterlab-lsp \
-    'python-lsp-server[all]' \
+    jedi-language-server \
     jupyterlab-git \
     jupyterlab-spreadsheet-editor \
     lckr-jupyterlab-variableinspector \
     jupyterlab-filesystem-access
     
-# from plotly documentation: install jupyter-dash
-
 # install python library
 COPY requirements.txt .
 RUN pip3 install --upgrade pip && \
